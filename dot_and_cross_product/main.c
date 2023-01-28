@@ -48,6 +48,7 @@ int main() {
 
         float array1[] = {1,2,3};
         float array2[] = {4,5};
+	float array3[] = {4,5,6};
         printf("this is a dot product: %9.5f\n", dotProduct(array1, 3, array2, 2));
 
         float *c = crossProduct(array1, 3, array2, 2);
