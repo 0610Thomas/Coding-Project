@@ -55,6 +55,7 @@ int main() {
         for(int i = 0; i < 3; i++) {
         printf("%9.5f\n", c[i]);
         }
+	printf("\n");
         
         printf("\nSecond test:\n Dot product: %9.5f\n", dotProduct(array1, 3, array3, 3));
 
