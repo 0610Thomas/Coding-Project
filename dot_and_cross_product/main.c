@@ -56,7 +56,7 @@ int main() {
         printf("%9.5f\n", c[i]);
         }
         
-        printf("Second test:\n Dot product: %9.5f\n", dotProduct(array1, 3, array3, 3));
+        printf("\nSecond test:\n Dot product: %9.5f\n", dotProduct(array1, 3, array3, 3));
 
         float *b = crossProduct(array1, 3, array3, 3);
         for(int i = 0; i < 3; i++) {
