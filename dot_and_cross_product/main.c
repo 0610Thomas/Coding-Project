@@ -34,15 +34,14 @@ float *crossProduct(float *firstVector, float flength, float *secondVector, floa
         float answer[3];
         if(sf != ss && sf != 3){
                 printf("No solution\n");
-                float *an = answer;
-                return an;
+                return *anwer;
         }
         answer[0] = firstVector[2]*secondVector[3] - secondVector[2]*firstVector[3];
         answer[1] = -(firstVector[1]*secondVector[3] - secondVector[1]*firstVector[3]);
         answer[2] = firstVector[1]*secondVector[2] - secondVector[1]*firstVector[2];
 
-        float *ans = answer;
-        return ans;
+
+        return *answer;
 }
 int main() {
 
