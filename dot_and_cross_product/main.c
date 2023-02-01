@@ -1,69 +1,48 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-float dotProduct(float *firstVector, float flength, float *secondVector, float slength) {
+typedef struct vector3d
+{
+    float x, y, z;
+} vector3d;
+
+float dotProduct(vector3d v1, vector3d v2) {
 
         float answer = 0.0;
-        int sf = flength; // sizeof(firstVector);
-        int ss = slength; //sizeof(secondVector); //Had firstVector instead of secondVector
 
-        //Problem: both sf and ss return the max size of a float array, or 8 as a result of the sizeof method.
-        // Solution: one way is to have the length fixed.
-        printf("%i sf %i ss\n", sf, ss);
+        answer += v1.x * v2.x;
+        answer += v1.y * v2.y;
+        answer += v1.z * v2.z;
 
-	//checks if the size of both vectors is the same, if not, returns 0
-        if(sf != ss){ 
-	//a zero vector is a legitimate answer that is not the same as No solution
-	// So, print that there is no solution
-                printf(“No solution\n”;)
-                return 0.0;
-
-        } 
-        //returns dot product
-        for(int i = 0; i < 3; i++) {
-        answer += firstVector[i] * secondVector[i];
-        }
         return answer;
-
 }
 
-float *crossProduct(float *firstVector, float flength, float *secondVector, float slength) {
 
-        int sf = flength; // sizeof(firstVector);
-        int ss = slength; //sizeof(secondVector);
+vector3d crossProduct(vector3d v1, vector3d v2) {
 
-        float answer[3];
-        if(sf != ss && sf != 3){
-                printf("No solution\n");
-                return *anwer;
-        }
-        answer[0] = firstVector[2]*secondVector[3] - secondVector[2]*firstVector[3];
-        answer[1] = -(firstVector[1]*secondVector[3] - secondVector[1]*firstVector[3]);
-        answer[2] = firstVector[1]*secondVector[2] - secondVector[1]*firstVector[2];
-
-
-        return *answer;
+        vector3d ans = {0, 0, 0};
+        ans.x = v1.y * v2.z - v2.y * v1.z;
+        ans.y = -1*(v1.x * v2.z - v2.x * v1.z);
+        ans.z = v1.x * v2.y - v2.x * v1.y;
+        return ans;
 }
 int main() {
 
-        float array1[] = {1,2,3};
-        float array2[] = {4,5};
-	float array3[] = {4,5,6};
-        printf("this is a dot product: %9.5f\n", dotProduct(array1, 3, array2, 2));
+        vector3d array1 = {1,2,3};
+        vector3d array2 = {4,5};
+        vector3d array3 = {4,5,6};
+        printf("this is a dot product: %9.5f\n", dotProduct(array1, array3));
 
-        float *c = crossProduct(array1, 3, array2, 2);
-        for(int i = 0; i < 3; i++) {
-        printf("%9.5f\n", c[i]);
-        }
-	printf("\n");
-        
-        printf("\nSecond test:\n Dot product: %9.5f\n", dotProduct(array1, 3, array3, 3));
-
-        float *b = crossProduct(array1, 3, array3, 3);
-        for(int i = 0; i < 3; i++) {
-                printf("%9.5f\n", b[i]);
-        }
+        vector3d an = crossProduct(array1, array3);
+        printf("Cross: %f\n%f\n%f\n", an.x, an.y, an.z);
 
 
+        /*
+        printf("Second test:\nDot product: %9.5f\n", dotProduct(array1, array2));
+
+        vector3d a = crossProduct(array1, array2);
+        printf("Cross: %f\n%f\n%f\n", a.x, a.y, a.z);
+        */
         return 0;
 }
 
